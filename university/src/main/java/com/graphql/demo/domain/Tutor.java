@@ -1,19 +1,19 @@
 package com.graphql.demo.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Tutor {
     private String name;
     private String surname;
     private Degree degree;
-    private List<Student> students;
 
-    public Tutor(String name, String surname, Degree degree, List<Student> students) {
+    public Tutor() {
+    }
+
+    public Tutor(String name, String surname, Degree degree) {
         this.name = name;
         this.surname = surname;
         this.degree = degree;
-        this.students = students;
     }
 
     public String getName() {
@@ -28,10 +28,6 @@ public class Tutor {
         return degree;
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,13 +35,12 @@ public class Tutor {
         Tutor tutor = (Tutor) o;
         return Objects.equals(name, tutor.name) &&
                 Objects.equals(surname, tutor.surname) &&
-                Objects.equals(degree, tutor.degree) &&
-                Objects.equals(students, tutor.students);
+                Objects.equals(degree, tutor.degree);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, degree, students);
+        return Objects.hash(name, surname, degree);
     }
 
     @Override
@@ -54,7 +49,6 @@ public class Tutor {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", degree=" + degree +
-                ", students=" + students +
                 '}';
     }
 }
