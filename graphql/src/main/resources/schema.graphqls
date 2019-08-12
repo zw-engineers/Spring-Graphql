@@ -1,0 +1,16 @@
+type Student {
+    name: String
+    surname: String
+    degree: Degree
+    tutor: Tutor
+}
+
+type Degree {
+    degree: String
+}
+
+type Tutor {
+    name: String
+    surname: String
+    degree: [Degree]
+}
