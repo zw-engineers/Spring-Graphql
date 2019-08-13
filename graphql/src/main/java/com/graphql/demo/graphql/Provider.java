@@ -1,6 +1,7 @@
 package com.graphql.demo.graphql;
 
 import com.google.common.base.Charsets;
+import com.graphql.demo.graphql.fetchers.StudentDataFetcher;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
@@ -20,6 +21,10 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 public class Provider {
 
     private final StudentDataFetcher studentDataFetcher;
+
+    public Provider(StudentDataFetcher studentDataFetcher) {
+        this.studentDataFetcher = studentDataFetcher;
+    }
 
     @Bean
     public GraphQL graphQL() throws IOException {
