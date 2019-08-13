@@ -45,7 +45,7 @@ public class Provider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("propertyById", this.propertySearchDataFetcher.getPropertyById()))
+                        .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents()))
                 .build();
     }
 }
