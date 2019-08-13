@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -19,16 +20,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDto> getStudentByName(String name) {
-        List<Student> students = getStudent(name);
+    public List<StudentDto> getStudentByName() {
+        List<Student> students = getStudent();
         return this.convertToDto(students);
     }
 
     private List<StudentDto> convertToDto(List<Student> students) {
-        return null;
+        return students
+                .stream()
+                .map(student -> new StudentDto(student.getName(), student.getSurname()))
+                .collect(Collectors.toList());
     }
 
-    private List<Student> getStudent(final String name) {
+    private List<Student> getStudent() {
         final String url = "http://localhost:8081/api/university/students";
 
         ParameterizedTypeReference<List<Student>> studentRef = new ParameterizedTypeReference<>() {};
