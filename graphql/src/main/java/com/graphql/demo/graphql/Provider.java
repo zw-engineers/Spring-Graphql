@@ -15,6 +15,7 @@ import com.google.common.io.Resources;
 import java.io.IOException;
 import java.net.URL;
 
+import static com.google.common.io.Resources.*;
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
 @Configuration
@@ -28,7 +29,7 @@ public class Provider {
 
     @Bean
     public GraphQL graphQL() throws IOException {
-        URL url = Resources.getResource("schema.graphqls");
+        URL url = getResource("schema.graphqls");
         String sdl = Resources.toString(url, Charsets.UTF_8);
         GraphQLSchema graphQLSchema = buildSchema(sdl);
 

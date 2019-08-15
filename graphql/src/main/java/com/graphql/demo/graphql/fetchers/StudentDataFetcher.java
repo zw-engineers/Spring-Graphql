@@ -15,8 +15,6 @@ public class StudentDataFetcher {
 
     public DataFetcher getAllStudents() {
 
-        return dataFetchingEnvironment -> {
-            return this.studentService.getStudentByName();
-        };
+        return dataFetchingEnvironment -> this.studentService.getStudentByName();
     }
 }
