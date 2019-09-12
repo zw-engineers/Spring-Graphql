@@ -46,6 +46,8 @@ public class Provider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
+                        .dataFetcher("getStudentByName", this.studentDataFetcher.getStudentByName()))
+                .type(newTypeWiring("Student")
                         .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents()))
                 .build();
     }

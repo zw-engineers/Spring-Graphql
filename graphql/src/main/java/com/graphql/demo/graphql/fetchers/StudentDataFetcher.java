@@ -14,7 +14,13 @@ public class StudentDataFetcher {
     }
 
     public DataFetcher getAllStudents() {
-
         return dataFetchingEnvironment -> this.studentService.getStudentByName();
+    }
+
+    public DataFetcher getStudentByName() {
+        return dataFetchingEnvironment -> {
+            String name = dataFetchingEnvironment.getArgument("name");
+            return this.studentService.getStudentByName(name);
+        };
     }
 }

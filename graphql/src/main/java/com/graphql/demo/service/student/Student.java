@@ -11,6 +11,9 @@ public class Student {
     private String name;
     private String surname;
 
+    public Student() {
+    }
+
     @JsonCreator
     public Student(
             @JsonProperty("name") String name,

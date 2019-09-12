@@ -1,3 +1,7 @@
+type Query {
+    getStudentByName(name: String): Student
+}
+
 type Student {
     name: String
     surname: String
