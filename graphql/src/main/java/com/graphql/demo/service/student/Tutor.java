@@ -2,19 +2,17 @@ package com.graphql.demo.service.student;
 
 import java.util.Objects;
 
-public class StudentDto {
+public class Tutor {
     private String name;
     private String surname;
     private Degree degree;
-    private Tutor tutor;
 
-    public StudentDto() { }
+    public Tutor() { }
 
-    public StudentDto(String name, String surname, Degree degree, Tutor tutor) {
+    public Tutor(String name, String surname, Degree degree) {
         this.name = name;
         this.surname = surname;
         this.degree = degree;
-        this.tutor = tutor;
     }
 
     public String getName() {
@@ -29,23 +27,18 @@ public class StudentDto {
         return degree;
     }
 
-    public Tutor getTutor() {
-        return tutor;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StudentDto that = (StudentDto) o;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname) &&
-                Objects.equals(degree, that.degree) &&
-                Objects.equals(tutor, that.tutor);
+        Tutor tutor = (Tutor) o;
+        return Objects.equals(name, tutor.name) &&
+                Objects.equals(surname, tutor.surname) &&
+                Objects.equals(degree, tutor.degree);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, degree, tutor);
+        return Objects.hash(name, surname, degree);
     }
 }

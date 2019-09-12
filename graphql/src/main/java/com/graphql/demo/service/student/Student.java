@@ -10,6 +10,8 @@ import java.util.Objects;
 public class Student {
     private String name;
     private String surname;
+    private Degree degree;
+    private Tutor tutor;
 
     public Student() {
     }
