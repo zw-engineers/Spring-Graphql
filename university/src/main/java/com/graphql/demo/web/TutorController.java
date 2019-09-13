@@ -7,15 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+
 @RestController
 public class TutorController {
     private TutorService tutorService;
+    private final static String TUTOR_URL = "/api/university/tutor";
 
     public TutorController(TutorService tutorService) {
         this.tutorService = tutorService;
     }
 
-    @GetMapping
+    @GetMapping(value = TUTOR_URL, produces = APPLICATION_JSON_UTF8_VALUE)
     public List<Tutor> getAllTutors() {
         return tutorService.getAllTutors();
     }
