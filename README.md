@@ -67,42 +67,62 @@ and you should have an output as below:
 ### Starting the `GraphQL` application
 * Navigate to the `graphql` application directory containing the `build.gradle` file and you should start the application with the following command:
 `./gradlew bootRun`. The application should be started on port 8080
+* You will need a GraphQl client which will enable you to run queries against the data returned from the `graphql` application. 
+There are a few clients as below:
+    * [GraphiQl](https://electronjs.org/apps/graphiql)
+    * [Insomnia + GraphQl](https://insomnia.rest/graphql/)
+* Download any of the clients above and you should be able to access the graphql endpoint at: `http://localhost:8080/graphql`.
+* I have two top queries:
+    * **Get Student By Name** - This query returns a student given an existing valid name
+    ```graphQl
+        type Query {
+            getAllStudents: [Student]
+        }
+    ```
+    * Below is an example to execute this query:
+    ```graphQl
+        {
+          getStudentByName(name: "artemas") {
+            name
+            surname
+            degree {
+              degree
+            }
+            tutor{
+              name
+              surname
+              degree {
+                degree
+              }
+            }
+          }
+        }
 
-```graphQl
-{
-  getStudentByName(name: "artemas") {
-    name
-    surname
-    degree {
-      degree
-    }
-    tutor{
-      name
-      surname
-      degree {
-        degree
-      }
-    }
-  }
-}
-
-```
-
-```graphQl
-{
-  getAllStudents {
-    name
-    surname
-    degree {
-      degree
-    }
-    tutor {
-      name
-      surname
-      degree {
-        degree
-      }
-    }
-  }
-}
-```
+    ```
+    
+    * **Get All Students** - This query will return all the students. This data matches what is returned by the `University` application.
+    ```
+        type Query {
+            getAllStudents: [Student]
+        }
+    ```
+    
+    * Below is how you execute this query:
+    ```graphQl
+        {
+          getAllStudents {
+            name
+            surname
+            degree {
+              degree
+            }
+            tutor {
+              name
+              surname
+              degree {
+                degree
+              }
+            }
+          }
+        }
+    ```
