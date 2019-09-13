@@ -1,5 +1,6 @@
 type Query {
     getStudentByName(name: String): Student
+    getAllStudents: [Student]
 }
 
 type Student {
