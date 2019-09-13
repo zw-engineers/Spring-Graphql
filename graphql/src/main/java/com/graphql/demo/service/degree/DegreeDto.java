@@ -1,4 +1,4 @@
-package com.graphql.demo.service.student;
+package com.graphql.demo.service.degree;
 
 public class DegreeDto {
     private String degree;

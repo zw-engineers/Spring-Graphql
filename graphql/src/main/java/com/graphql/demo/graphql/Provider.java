@@ -1,6 +1,7 @@
 package com.graphql.demo.graphql;
 
 import com.google.common.base.Charsets;
+import com.graphql.demo.graphql.fetchers.DegreeDataFetcher;
 import com.graphql.demo.graphql.fetchers.StudentDataFetcher;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
@@ -22,9 +23,11 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 public class Provider {
 
     private final StudentDataFetcher studentDataFetcher;
+    private final DegreeDataFetcher degreeDataFetcher;
 
-    public Provider(StudentDataFetcher studentDataFetcher) {
+    public Provider(StudentDataFetcher studentDataFetcher, DegreeDataFetcher degreeDataFetcher) {
         this.studentDataFetcher = studentDataFetcher;
+        this.degreeDataFetcher = degreeDataFetcher;
     }
 
     @Bean
@@ -51,6 +54,8 @@ public class Provider {
                 )
                 .type(newTypeWiring("Student")
                         .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents()))
+                .type(newTypeWiring("Degree")
+                        .dataFetcher("getAllDegrees", this.degreeDataFetcher.getAllDegrees()))
                 .build();
     }
 }

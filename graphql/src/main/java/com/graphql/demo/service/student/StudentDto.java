@@ -1,5 +1,8 @@
 package com.graphql.demo.service.student;
 
+import com.graphql.demo.service.Tutor.Tutor;
+import com.graphql.demo.service.degree.Degree;
+
 import java.util.Objects;
 
 public class StudentDto {

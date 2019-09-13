@@ -1,4 +1,6 @@
-package com.graphql.demo.service.student;
+package com.graphql.demo.service.Tutor;
+
+import com.graphql.demo.service.degree.Degree;
 
 import java.util.Objects;
 

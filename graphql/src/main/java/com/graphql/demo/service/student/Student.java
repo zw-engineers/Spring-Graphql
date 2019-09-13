@@ -3,6 +3,8 @@ package com.graphql.demo.service.student;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.graphql.demo.service.Tutor.Tutor;
+import com.graphql.demo.service.degree.Degree;
 
 import java.util.Objects;
 
