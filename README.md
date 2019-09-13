@@ -68,6 +68,7 @@ and you should have an output as below:
 * Navigate to the `graphql` application directory containing the `build.gradle` file and you should start the application with the following command:
 `./gradlew bootRun`. The application should be started on port 8080
 
+```graphQl
 {
   getStudentByName(name: "artemas") {
     name
@@ -85,6 +86,9 @@ and you should have an output as below:
   }
 }
 
+```
+
+```graphQl
 {
   getAllStudents {
     name
@@ -101,3 +105,4 @@ and you should have an output as below:
     }
   }
 }
+```
