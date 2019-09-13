@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDto> getStudentByName() {
         List<Student> students = getStudent();
-        return this.convertToDto(students);
+        return this.convertListOfStudentsToDTO(students);
     }
 
     @Override
@@ -32,28 +32,28 @@ public class StudentServiceImpl implements StudentService {
         return getStudent()
                 .stream()
                 .filter(student -> name.equals(student.getName()))
-                .map(this::convertStudentToDTO)
+                .map(this::convertToDTO)
                 .findFirst()
                 .orElse(new StudentDto());
     }
 
-    private List<StudentDto> convertToDto(List<Student> students) {
+    private List<StudentDto> convertListOfStudentsToDTO(List<Student> students) {
         return students
                 .stream()
-                .map(convertStudentToDTO())
+                .map(this::convertStudentToDTO)
                 .collect(Collectors.toList());
     }
 
-    private StudentDto convertStudentToDTO(Student student) {
+    private StudentDto convertToDTO(Student student) {
         return Optional.ofNullable(student)
                 .stream()
-                .map(convertStudentToDTO())
+                .map(this::convertStudentToDTO)
                 .findFirst().orElse(new StudentDto());
 
     }
 
-    private Function<Student, StudentDto> convertStudentToDTO() {
-        return student -> new StudentDto(student.getName(), student.getSurname(), student.getDegree(), student.getTutor());
+    private StudentDto convertStudentToDTO(Student student) {
+        return new StudentDto(student.getName(), student.getSurname(), student.getDegree(), student.getTutor());
     }
 
     private List<Student> getStudent() {
