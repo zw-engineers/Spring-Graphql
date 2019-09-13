@@ -19,48 +19,48 @@ and you should have an output as below:
 
 ```json
 [
-{
-name: "artemas",
-surname: "muzanenhamo",
-degree: {
-degree: "software engineering"
-},
-tutor: {
-name: "jessica",
-surname: "stevens",
-degree: {
-degree: "software engineering"
-}
-}
-},
-{
-name: "thomas",
-surname: "jenkins",
-degree: {
-degree: "bio-chemistry"
-},
-tutor: {
-name: "lavern",
-surname: "masoja",
-degree: {
-degree: "bio-chemistry"
-}
-}
-},
-{
-name: "sarah",
-surname: "smith",
-degree: {
-degree: "computer science"
-},
-tutor: {
-name: "randal",
-surname: "macbeth",
-degree: {
-degree: "computer science"
-}
-}
-}
+  {
+    "name": "artemas",
+    "surname": "muzanenhamo",
+    "degree": {
+      "degree": "software engineering"
+    },
+    "tutor": {
+      "name": "jessica",
+      "surname": "stevens",
+      "degree": {
+        "degree": "software engineering"
+      }
+    }
+  },
+  {
+    "name": "thomas",
+    "surname": "jenkins",
+    "degree": {
+      "degree": "bio-chemistry"
+    },
+    "tutor": {
+      "name": "lavern",
+      "surname": "masoja",
+      "degree": {
+        "degree": "bio-chemistry"
+      }
+    }
+  },
+  {
+    "name": "sarah",
+    "surname": "smith",
+    "degree": {
+      "degree": "computer science"
+    },
+    "tutor": {
+      "name": "randal",
+      "surname": "macbeth",
+      "degree": {
+        "degree": "computer science"
+      }
+    }
+  }
 ]
 ```
 
