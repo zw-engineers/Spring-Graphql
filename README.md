@@ -19,48 +19,48 @@ and you should have an output as below:
 
 ```json
 [
-{
-name: "artemas",
-surname: "muzanenhamo",
-degree: {
-degree: "software engineering"
-},
-tutor: {
-name: "jessica",
-surname: "stevens",
-degree: {
-degree: "software engineering"
-}
-}
-},
-{
-name: "thomas",
-surname: "jenkins",
-degree: {
-degree: "bio-chemistry"
-},
-tutor: {
-name: "lavern",
-surname: "masoja",
-degree: {
-degree: "bio-chemistry"
-}
-}
-},
-{
-name: "sarah",
-surname: "smith",
-degree: {
-degree: "computer science"
-},
-tutor: {
-name: "randal",
-surname: "macbeth",
-degree: {
-degree: "computer science"
-}
-}
-}
+  {
+    "name": "artemas",
+    "surname": "muzanenhamo",
+    "degree": {
+      "degree": "software engineering"
+    },
+    "tutor": {
+      "name": "jessica",
+      "surname": "stevens",
+      "degree": {
+        "degree": "software engineering"
+      }
+    }
+  },
+  {
+    "name": "thomas",
+    "surname": "jenkins",
+    "degree": {
+      "degree": "bio-chemistry"
+    },
+    "tutor": {
+      "name": "lavern",
+      "surname": "masoja",
+      "degree": {
+        "degree": "bio-chemistry"
+      }
+    }
+  },
+  {
+    "name": "sarah",
+    "surname": "smith",
+    "degree": {
+      "degree": "computer science"
+    },
+    "tutor": {
+      "name": "randal",
+      "surname": "macbeth",
+      "degree": {
+        "degree": "computer science"
+      }
+    }
+  }
 ]
 ```
 
@@ -68,6 +68,7 @@ degree: "computer science"
 * Navigate to the `graphql` application directory containing the `build.gradle` file and you should start the application with the following command:
 `./gradlew bootRun`. The application should be started on port 8080
 
+```graphQl
 {
   getStudentByName(name: "artemas") {
     name
@@ -85,6 +86,9 @@ degree: "computer science"
   }
 }
 
+```
+
+```graphQl
 {
   getAllStudents {
     name
@@ -101,3 +105,4 @@ degree: "computer science"
     }
   }
 }
+```
