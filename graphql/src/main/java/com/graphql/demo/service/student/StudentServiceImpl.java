@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDto> getStudentByName() {
+    public List<StudentDto> getAllStudents() {
         List<Student> students = getStudent();
         return this.convertListOfStudentsToDTO(students);
     }
