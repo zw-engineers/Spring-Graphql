@@ -51,11 +51,10 @@ public class Provider {
                 .type(newTypeWiring("Query")
                         .dataFetcher("getStudentByName", this.studentDataFetcher.getStudentByName())
                         .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents())
+                        .dataFetcher("getAllDegrees", this.degreeDataFetcher.getAllDegrees())
                 )
                 .type(newTypeWiring("Student")
                         .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents()))
-                .type(newTypeWiring("Degree")
-                        .dataFetcher("getAllDegrees", this.degreeDataFetcher.getAllDegrees()))
                 .build();
     }
 }

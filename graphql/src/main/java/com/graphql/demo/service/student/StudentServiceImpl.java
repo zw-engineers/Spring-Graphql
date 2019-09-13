@@ -22,13 +22,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDto> getAllStudents() {
-        List<Student> students = getStudent();
+        List<Student> students = getStudents();
         return this.convertListOfStudentsToDTO(students);
     }
 
     @Override
     public StudentDto getStudentByName(String name) {
-        return getStudent()
+        return getStudents()
                 .stream()
                 .filter(student -> name.equals(student.getName()))
                 .map(this::convertToDTO)
@@ -47,7 +47,8 @@ public class StudentServiceImpl implements StudentService {
         return Optional.ofNullable(student)
                 .stream()
                 .map(this::convertStudentToDTO)
-                .findFirst().orElse(new StudentDto());
+                .findFirst()
+                .orElse(new StudentDto());
 
     }
 
@@ -55,7 +56,7 @@ public class StudentServiceImpl implements StudentService {
         return new StudentDto(student.getName(), student.getSurname(), student.getDegree(), student.getTutor());
     }
 
-    private List<Student> getStudent() {
+    private List<Student> getStudents() {
         final String url = "http://localhost:8081/api/university/students";
 
         ParameterizedTypeReference<List<Student>> studentRef = new ParameterizedTypeReference<>() {};
