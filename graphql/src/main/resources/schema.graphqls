@@ -16,5 +16,5 @@ type Degree {
 type Tutor {
     name: String
     surname: String
-    degree: [Degree]
+    degree: Degree
 }

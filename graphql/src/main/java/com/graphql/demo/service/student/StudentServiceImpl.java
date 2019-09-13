@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
         return getStudent()
                 .stream()
                 .filter(student -> name.equals(student.getName()))
-                .map(this::convertStudentToDto)
+                .map(this::convertStudentToDTO)
                 .findFirst()
                 .orElse(new StudentDto());
     }
@@ -40,16 +40,20 @@ public class StudentServiceImpl implements StudentService {
     private List<StudentDto> convertToDto(List<Student> students) {
         return students
                 .stream()
-                .map(student -> new StudentDto(student.getName(), student.getSurname()))
+                .map(convertStudentToDTO())
                 .collect(Collectors.toList());
     }
 
-    private StudentDto convertStudentToDto(Student student) {
+    private StudentDto convertStudentToDTO(Student student) {
         return Optional.ofNullable(student)
                 .stream()
-                .map(scholar -> new StudentDto(scholar.getName(), scholar.getSurname()))
+                .map(convertStudentToDTO())
                 .findFirst().orElse(new StudentDto());
 
+    }
+
+    private Function<Student, StudentDto> convertStudentToDTO() {
+        return student -> new StudentDto(student.getName(), student.getSurname(), student.getDegree(), student.getTutor());
     }
 
     private List<Student> getStudent() {
