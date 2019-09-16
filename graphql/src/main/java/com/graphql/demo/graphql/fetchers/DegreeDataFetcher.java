@@ -16,4 +16,12 @@ public class DegreeDataFetcher {
     public DataFetcher getAllDegrees() {
         return dataFetchingEnvironment -> this.degreeService.getAllDegrees();
     }
+
+    public DataFetcher getDegreeByTitle() {
+
+        return dataFetchingEnvironment -> {
+            String title = dataFetchingEnvironment.getArgument("degree");
+            return this.degreeService.getDegreeByTitle(title);
+        };
+    }
 }

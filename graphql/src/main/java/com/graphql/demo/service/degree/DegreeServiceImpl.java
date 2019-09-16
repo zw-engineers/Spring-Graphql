@@ -27,6 +27,15 @@ public class DegreeServiceImpl implements DegreeService {
         return convertDegreesToDTO(degrees);
     }
 
+    @Override
+    public DegreeDto getDegreeByTitle(String title) {
+        return getAllDegrees()
+                .stream()
+                .filter(e -> e.getDegree().equals(title))
+                .findFirst()
+                .orElse(new DegreeDto());
+    }
+
     private List<DegreeDto> convertDegreesToDTO(List<Degree> degrees) {
         return degrees
                 .stream()
