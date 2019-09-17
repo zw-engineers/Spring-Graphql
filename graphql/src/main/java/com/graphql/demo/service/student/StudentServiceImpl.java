@@ -51,15 +51,6 @@ public class StudentServiceImpl implements StudentService {
                 .collect(Collectors.toList());
     }
 
-    private StudentDto convertToDTO(Student student) {
-        return Optional.ofNullable(student)
-                .stream()
-                .map(this::convertStudentToDTO)
-                .findFirst()
-                .orElse(new StudentDto());
-
-    }
-
     private StudentDto convertStudentToDTO(Student student) {
         return new StudentDto(student.getName(), student.getSurname(), student.getDegree(), student.getTutor());
     }
