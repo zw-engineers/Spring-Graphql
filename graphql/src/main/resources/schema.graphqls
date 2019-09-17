@@ -1,6 +1,7 @@
 type Query {
     getStudentByName(name: String): Student
     getAllStudents: [Student]
+    getStudentByDegree(degree: String): Student
     getDegreeByTitle(degree: String): Degree
     getAllDegrees: [Degree]
 }

@@ -28,10 +28,18 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDto getStudentByName(String name) {
-        return getStudents()
+        return getAllStudents()
                 .stream()
                 .filter(student -> name.equals(student.getName()))
-                .map(this::convertToDTO)
+                .findFirst()
+                .orElse(new StudentDto());
+    }
+
+    @Override
+    public StudentDto getStudentByDegree(String degree) {
+        return getAllStudents()
+                .stream()
+                .filter(student -> degree.equals(student.getDegree().getDegree()))
                 .findFirst()
                 .orElse(new StudentDto());
     }

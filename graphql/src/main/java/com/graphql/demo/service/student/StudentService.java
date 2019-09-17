@@ -6,4 +6,6 @@ public interface StudentService {
     List<StudentDto> getAllStudents();
 
     StudentDto getStudentByName(final String name);
+
+    StudentDto getStudentByDegree(String degree);
 }

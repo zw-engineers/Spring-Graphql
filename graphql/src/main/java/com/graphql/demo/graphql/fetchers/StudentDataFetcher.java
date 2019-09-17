@@ -23,4 +23,11 @@ public class StudentDataFetcher {
             return this.studentService.getStudentByName(name);
         };
     }
+
+    public DataFetcher getStudentByDegree() {
+        return dataFetchingEnvironment -> {
+            String degree = dataFetchingEnvironment.getArgument("degree");
+            return this.studentService.getStudentByDegree(degree);
+        };
+    }
 }
