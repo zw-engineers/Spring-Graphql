@@ -20,8 +20,8 @@ public class DegreeDataFetcher {
     public DataFetcher getDegreeByTitle() {
 
         return dataFetchingEnvironment -> {
-            String title = dataFetchingEnvironment.getArgument("degree");
-            return this.degreeService.getDegreeByTitle(title);
+            String degree = dataFetchingEnvironment.getArgument("degree");
+            return this.degreeService.getDegreeByTitle(degree);
         };
     }
 }

@@ -5,5 +5,5 @@ import java.util.List;
 public interface DegreeService {
     List<DegreeDto> getAllDegrees();
 
-    DegreeDto getDegreeByTitle(String title);
+    DegreeDto getDegreeByTitle(String degree);
 }
