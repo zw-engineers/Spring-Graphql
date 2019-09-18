@@ -8,4 +8,6 @@ public interface StudentService {
     StudentDto getStudentByName(final String name);
 
     StudentDto getStudentByDegree(String degree);
+
+    StudentDto getStudentByTutor(String tutor);
 }

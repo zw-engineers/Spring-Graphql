@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,6 +42,19 @@ public class StudentServiceImpl implements StudentService {
                 .filter(student -> degree.equals(student.getDegree().getDegree()))
                 .findFirst()
                 .orElse(new StudentDto());
+    }
+
+    @Override
+    public StudentDto getStudentByTutor(String tutor) {
+        return getAllStudents()
+                .stream()
+                .filter(isStudentTutorNameOrSurname(tutor))
+                .findFirst()
+                .orElse(new StudentDto());
+    }
+
+    private Predicate<StudentDto> isStudentTutorNameOrSurname(String tutor) {
+        return student -> tutor.equals(student.getTutor().getName()) || tutor.equals(student.getTutor().getSurname());
     }
 
     private List<StudentDto> convertListOfStudentsToDTO(List<Student> students) {

@@ -30,4 +30,11 @@ public class StudentDataFetcher {
             return this.studentService.getStudentByDegree(degree);
         };
     }
+
+    public DataFetcher getStudentByTutor() {
+        return dataFetchingEnvironment -> {
+            String tutor = dataFetchingEnvironment.getArgument("tutor");
+            return this.studentService.getStudentByTutor(tutor);
+        };
+    }
 }
