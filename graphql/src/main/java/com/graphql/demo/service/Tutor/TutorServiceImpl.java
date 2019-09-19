@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import static org.springframework.http.HttpEntity.EMPTY;
 import static org.springframework.http.HttpMethod.GET;
@@ -22,8 +23,20 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public TutorDto getTutorByDegree(String degree) {
-        // TODO: implement to retrieve tutor by degree
-        return null;
+        return getAllTutors()
+                .stream()
+                .filter(isTutorPresent(degree))
+                .map(this::toTutorDto)
+                .findFirst()
+                .orElse(new TutorDto());
+    }
+
+    private Predicate<Tutor> isTutorPresent(String degree) {
+        return tutor -> tutor.getDegree().getDegree().contains(degree);
+    }
+
+    private TutorDto toTutorDto(Tutor tutor) {
+        return new TutorDto(tutor.getName(), tutor.getSurname(), tutor.getDegree());
     }
 
     private List<Tutor> getAllTutors() {
