@@ -5,6 +5,7 @@ type Query {
     getStudentByTutor(tutor: String): Student
     getDegreeByTitle(degree: String): Degree
     getAllDegrees: [Degree]
+    getTutorByDegree(degree: String): Tutor
 }
 
 type Student {
