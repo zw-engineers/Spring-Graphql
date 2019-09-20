@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto getStudentByName(String name) {
         return getAllStudents()
                 .stream()
-                .filter(student -> name.equals(student.getName()))
+                .filter(getStudentDtoPredicate(name))
                 .findFirst()
                 .orElse(new StudentDto());
     }
@@ -41,7 +41,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto getStudentByDegree(String degree) {
         return getAllStudents()
                 .stream()
-                .filter(student -> degree.equals(student.getDegree().getDegree()))
+                .filter(getStudentByDegreePredicate(degree))
                 .findFirst()
                 .orElse(new StudentDto());
     }
@@ -53,6 +53,14 @@ public class StudentServiceImpl implements StudentService {
                 .filter(isStudentTutorNameOrSurname(tutor))
                 .findFirst()
                 .orElse(new StudentDto());
+    }
+
+    private Predicate<StudentDto> getStudentDtoPredicate(String name) {
+        return student -> name.equals(student.getName());
+    }
+
+    private Predicate<StudentDto> getStudentByDegreePredicate(String degree) {
+        return student -> degree.equals(student.getDegree().getDegree());
     }
 
     private Predicate<StudentDto> isStudentTutorNameOrSurname(String tutor) {
