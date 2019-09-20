@@ -28,10 +28,10 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
-    public DegreeDto getDegreeByTitle(String degree) {
+    public DegreeDto getDegreeByTitle(String degreeName) {
         return getAllDegrees()
                 .stream()
-                .filter(e -> e.getDegree().contains(degree))
+                .filter(degree -> degree.getDegree().contains(degreeName))
                 .findFirst()
                 .orElse(new DegreeDto());
     }
