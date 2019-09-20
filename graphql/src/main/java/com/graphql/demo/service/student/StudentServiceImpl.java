@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static org.springframework.http.HttpStatus.OK;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -75,7 +77,7 @@ public class StudentServiceImpl implements StudentService {
 
         ResponseEntity<List<Student>> response = this.restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, studentRef);
 
-        if (response.getStatusCode().value() == 200) {
+        if (OK.value() == response.getStatusCode().value()) {
             return response.getBody();
         } else {
             throw new RuntimeException("Got an unexpected response from University Service");

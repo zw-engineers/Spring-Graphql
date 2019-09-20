@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpEntity.EMPTY;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpStatus.OK;
 
 @Service
 public class TutorServiceImpl implements TutorService {
@@ -53,7 +54,7 @@ public class TutorServiceImpl implements TutorService {
 
         ResponseEntity<List<Tutor>> responseEntity = this.restTemplate.exchange(URL, GET, EMPTY, tutorTypeRef);
 
-        if (responseEntity.getStatusCode().value() == 200) {
+        if (OK.value() == responseEntity.getStatusCode().value()) {
             return responseEntity.getBody();
         } else {
             throw new RuntimeException("Got an unexpected response from University Service retrieving Tutor");

@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpEntity.EMPTY;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpStatus.OK;
 
 @Service
 public class DegreeServiceImpl implements DegreeService {
@@ -51,7 +52,7 @@ public class DegreeServiceImpl implements DegreeService {
 
         ResponseEntity<List<Degree>> response = this.restTemplate.exchange(URL, GET, EMPTY, degreeTypeRef);
 
-        if (response.getStatusCode().value() == 200) {
+        if (OK.value() == response.getStatusCode().value()) {
             return response.getBody();
         } else {
             throw new RuntimeException("Got an unexpected response from University Service retrieving Degree");
