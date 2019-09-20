@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpEntity.EMPTY;
@@ -28,12 +29,16 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
-    public DegreeDto getDegreeByTitle(String degreeName) {
+    public DegreeDto getDegreeByTitle(final String degreeName) {
         return getAllDegrees()
                 .stream()
-                .filter(degree -> degree.getDegree().contains(degreeName))
+                .filter(degreeByName(degreeName))
                 .findFirst()
                 .orElse(new DegreeDto());
+    }
+
+    private Predicate<DegreeDto> degreeByName(final String degreeName) {
+        return degree -> degree.getDegree().contains(degreeName);
     }
 
     private List<DegreeDto> convertDegreesToDTO(List<Degree> degrees) {
