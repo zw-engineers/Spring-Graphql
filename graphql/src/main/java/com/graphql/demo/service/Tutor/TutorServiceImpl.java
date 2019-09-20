@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpEntity.EMPTY;
 import static org.springframework.http.HttpMethod.GET;
@@ -23,12 +24,20 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public TutorDto getTutorByDegree(String degree) {
-        return getAllTutors()
+        return getAllTutorsFromClient()
                 .stream()
                 .filter(isTutorPresent(degree))
                 .map(this::toTutorDto)
                 .findFirst()
                 .orElse(new TutorDto());
+    }
+
+    @Override
+    public List<TutorDto> getAllTutors() {
+        return getAllTutorsFromClient()
+                .stream()
+                .map(this::toTutorDto)
+                .collect(Collectors.toList());
     }
 
     private Predicate<Tutor> isTutorPresent(String degree) {
@@ -39,7 +48,7 @@ public class TutorServiceImpl implements TutorService {
         return new TutorDto(tutor.getName(), tutor.getSurname(), tutor.getDegree());
     }
 
-    private List<Tutor> getAllTutors() {
+    private List<Tutor> getAllTutorsFromClient() {
         ParameterizedTypeReference<List<Tutor>> tutorTypeRef = new ParameterizedTypeReference<>() {};
 
         ResponseEntity<List<Tutor>> responseEntity = this.restTemplate.exchange(URL, GET, EMPTY, tutorTypeRef);

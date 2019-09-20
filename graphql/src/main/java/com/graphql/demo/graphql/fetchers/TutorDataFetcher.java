@@ -19,4 +19,8 @@ public class TutorDataFetcher {
             return this.tutorService.getTutorByDegree(degree);
         };
     }
+
+    public DataFetcher getAllTutors() {
+        return dataFetchingEnvironment -> this.tutorService.getAllTutors();
+    }
 }

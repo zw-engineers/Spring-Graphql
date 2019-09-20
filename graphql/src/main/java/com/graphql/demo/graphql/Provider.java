@@ -59,6 +59,7 @@ public class Provider {
                         .dataFetcher("getDegreeByTitle", this.degreeDataFetcher.getDegreeByTitle())
                         .dataFetcher("getAllDegrees", this.degreeDataFetcher.getAllDegrees())
                         .dataFetcher("getTutorByDegree", this.tutorDataFetcher.getTutorByDegree())
+                        .dataFetcher("getAllTutors", this.tutorDataFetcher.getAllTutors())
                 )
                 .type(newTypeWiring("Student")
                         .dataFetcher("getAllStudents", this.studentDataFetcher.getAllStudents())
