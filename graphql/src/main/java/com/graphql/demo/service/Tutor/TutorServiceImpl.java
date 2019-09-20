@@ -24,7 +24,7 @@ public class TutorServiceImpl implements TutorService {
     }
 
     @Override
-    public TutorDto getTutorByDegree(String degree) {
+    public TutorDto getTutorByDegree(final String degree) {
         return getAllTutorsFromClient()
                 .stream()
                 .filter(isTutorPresent(degree))
@@ -41,7 +41,7 @@ public class TutorServiceImpl implements TutorService {
                 .collect(Collectors.toList());
     }
 
-    private Predicate<Tutor> isTutorPresent(String degree) {
+    private Predicate<Tutor> isTutorPresent(final String degree) {
         return tutor -> tutor.getDegree().getDegree().contains(degree);
     }
 
