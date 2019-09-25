@@ -33,9 +33,9 @@ test {
     useJUnitPlatform()
 }
 
-bootJar {
-    enabled = true
-}
+//bootJar {
+//    enabled = true
+//}
 
 jar {
     enabled = true
@@ -45,6 +45,6 @@ jar {
 springBoot {
     mainClassName = 'com.graphql.demo.GraphqlApplication'
 }
-bootRun {
-    main = 'com.graphql.demo.GraphqlApplication'
-}
+//bootRun {
+//    main = 'com.graphql.demo.GraphqlApplication'
+//}

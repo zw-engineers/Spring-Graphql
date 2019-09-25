@@ -1,3 +1,4 @@
 rootProject.name = 'graphql'
 
 include 'service'
+include 'web'
