@@ -1,0 +1,58 @@
+buildscript {
+    ext { springBootVersion = '2.1.7.RELEASE' }
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+plugins {
+    id 'org.springframework.boot'
+    id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName("graphql")
+}
+
+allprojects {
+    group = 'com.graphql'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.graphql-java:java-dataloader:2.2.1'
+    implementation 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile project(':service')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+subprojects {
+    getDependencies()
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}
+
+springBoot {
+    mainClassName = "com.graphql.demo.GraphqlApplication"
+}

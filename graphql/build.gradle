@@ -3,11 +3,23 @@ plugins {
 	id 'java'
 }
 
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.graphql.demo'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+bootJar {
+	baseName("graphql")
+}
+
+allprojects {
+	group = 'com.graphql'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+
+	apply plugin: 'java'
+	apply plugin: 'idea'
+}
 
 repositories {
 	mavenCentral()
@@ -19,5 +31,15 @@ dependencies {
 	implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
     implementation 'com.google.guava:guava:26.0-jre'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile project(':web')
+	compile project(':service')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+subprojects {
+	getDependencies()
+}
+
+bootRun {
+	main = 'com.graphql.demo.GraphqlApplication'
 }

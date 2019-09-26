@@ -1,0 +1,40 @@
+buildscript {
+    repositories { mavenCentral() }
+}
+
+plugins {
+    id "io.spring.dependency-management"
+}
+
+ext {
+    springBootVersion = '2.1.7.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName('graphql-service')
+    version('0.0.1-SNAPSHOT')
+}
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    }
+}
