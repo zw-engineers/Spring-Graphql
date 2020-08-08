@@ -10,6 +10,10 @@
 
 ### Starting University App
 
+### Architecture
+
+<img src="https://user-images.githubusercontent.com/29547780/89707242-496c1b00-d964-11ea-9a46-c01dc0a0f647.jpg" />
+
 * To start the `University` application just navigate into the university app directory containing the `build.gradle` file and just
 start the app by running the command `./gradlew bootRun` and it should start the application on port 8081.
 * You can test that you are recieving a list of `Students` with degrees and tutors by calling the following API:
