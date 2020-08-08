@@ -8,11 +8,13 @@
 
 ## How to startup the application:
 
-### Starting University App
-
 ### Architecture
 
 <img src="https://user-images.githubusercontent.com/29547780/89707242-496c1b00-d964-11ea-9a46-c01dc0a0f647.jpg" />
+
+The idea is if any UI or Service wanted specific data, it could use GraphQL as a tool to filter out unnecessary data that we might not want the client to see/have. For example in this architecture, we have our **University** microservice which contains all university student details. Normally you would have another service consuming this **University** microservice with a *getAllStudents()* method and then the UI/Client would have to do all the filtering of that data. However, with our **GraphQL** microservice here, it will query our **Univeristy** microservice and filter out the data for our UI/client to consume. In our example, GraphQL will only return student data given an existing student name instead of the client getting all student data and then performing the filtering.
+
+### Starting University App
 
 * To start the `University` application just navigate into the university app directory containing the `build.gradle` file and just
 start the app by running the command `./gradlew bootRun` and it should start the application on port 8081.
